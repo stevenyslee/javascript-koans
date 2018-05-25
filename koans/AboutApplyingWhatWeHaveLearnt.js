@@ -37,8 +37,15 @@ describe("About Applying What We Have Learnt", function() {
       var productsICanEat = [];
 
       /* solve using filter() & all() / any() */
+      // productsICanEat = _(products.containsNuts).filter(function(x) {return x === false});
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+      for( let i = 0; i < products.length; i++ ){
+        if( products[i].containsNuts === false && !_(products[i].ingredients).any(x => (x === "mushrooms"))){
+          // console.log(products[i].ingredients.any(x => (x === "mushrooms")) );
+          productsICanEat.push(products[i]);
+        }
+      }
+      expect(productsICanEat.length).toBe(1);
   });
 
   /*********************************************************************************/
