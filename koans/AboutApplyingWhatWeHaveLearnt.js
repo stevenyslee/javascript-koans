@@ -84,17 +84,11 @@ describe("About Applying What We Have Learnt", function() {
           "{ingredient name}": 0
       };
 
-      /* chain() together map(), flatten() and reduce() */
-      // ingredientCount = _(products).chain()
-      //                   .map(name => (name.ingredients))
-      //                   .flatten()
-      //                   .reduce(ingredient => ((ingredientCount[ingredient] || 0) + 1) )
-      //                   .value();
       ingredientCount = _(products).chain()
           .map(name => name.ingredients)
           .flatten()
-          .reduce(function(ingredientCount, i) {
-              ingredientCount[i] = (ingredientCount[i] || 0) + 1;
+          .reduce(function(ingredientCount, ingredient) {
+              ingredientCount[ingredient] = (ingredientCount[ingredient] || 0) + 1;
               return ingredientCount
           }, {}).value();
 
